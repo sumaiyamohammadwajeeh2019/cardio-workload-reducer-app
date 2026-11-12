@@ -1,0 +1,14 @@
+services:
+- type: web
+  name: cardio-workload-reducer
+  env: python
+  plan: free
+  buildCommand: "pip install -r requirements.txt"
+  startCommand: "python app.py"
+  envVars:
+    - key: PORT
+      value: 5001
+    - key: DATABASE_URL
+      value: sqlite:///cardio.db
+  healthCheckPath: "/"
+  autoDeploy: true
